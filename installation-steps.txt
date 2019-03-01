@@ -1,0 +1,27 @@
+sudo apt-get update
+sudo apt-get install libblas-dev liblapack-dev python-dev libatlas-base-dev gfortran python-setuptools git
+sudo apt-get install python-pip
+sudo pip install virtualenvwrapper
+export WORKON_HOME=~/Envs
+mkdir -p $WORKON_HOME
+source /usr/local/bin/virtualenvwrapper.sh 
+mkvirtualenv --system-site-packages serval
+export WORKON_HOME=~/Envs
+source /usr/local/bin/virtualenvwrapper.sh
+workon serval
+sudo pip2 install http://ci.tensorflow.org/view/Nightly/job/nightly-pi/lastSuccessfulBuild/artifact/output-artifacts/tensorflow-1.9.0rc0-cp27-none-linux_armv7l.whl
+sudo pip install pandas==0.22.0
+sudo pip install scipy
+pip install pyaudio
+sudo apt-get install libportaudio2 portaudio19-dev
+sudo apt-get install mosquitto
+pip install pyaudio
+pip install resampy==0.1.5
+pip install samplerate==0.1.0
+pip install pyalsaaudio
+vi ~/.asoundrc
+# Copy the devicehive-dev folder from the repo to ~/DL/devicehive-dev
+mkdir ~/serval
+vi ~/serval/serval.sh # use the contents from the repo as an example
+sudo vi /lib/systemd/system/serval.service # use the contents from the repo as an example
+sudo systemctl enable serval.service

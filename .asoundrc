@@ -1,0 +1,56 @@
+pcm.!default {
+  type asym
+   playback.pcm {
+     type plug
+     slave.pcm "hw:0,0"
+   }
+   capture.pcm {
+     type plug
+     slave.pcm "hw:1,0"
+   }
+}
+
+pcm.rate48000Hz {
+        type plug
+        slave {
+                pcm "hw:1,0"
+                rate 48000
+		channels 1
+		format S16_LE
+        }
+}
+
+pcm.umik {
+	type plug
+	slave {
+		pcm "hw:1,0"
+		rate 48000
+		channels 2
+		format S24_3LE
+	}
+}
+
+pcm.makemono {           
+        type plug      
+        slave.pcm {  
+                type route                     
+                slave.pcm "pcm.umik"
+                slave.channels 2
+                ttable {  
+                        0.0 1  
+                        1.0 1
+                }                   
+        }                               
+}
+
+pcm.rate16000Hz {
+	type plug
+	slave {
+		pcm makemono
+		rate 16000
+		channels 1
+		format S16_LE
+	}
+}
+
+

@@ -1,4 +1,4 @@
-# soundscapethecity
+# OpenEars
 sensor to classify sounds
 
 Serval image documentatie

@@ -1,7 +1,7 @@
 # OpenEars
 sensor to classify sounds
 
-Serval image documentatie
+SERVAL image documentatie (Sound Event Recognition for Vigilance and Localisation)
 Sensing Clues: Juli 2018
 Image versie: 1.0
 

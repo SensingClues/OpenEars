@@ -1,9 +1,27 @@
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 # OpenEars
 sensor to classify sounds
 
 SERVAL image documentatie (Sound Event Recognition for Vigilance and Localisation)
 Sensing Clues: Juli 2018
-Image versie: 1.0
+Sensemakers and Sensing Clues: april 2019
+Image versie: 1.1
+
+## Installation
+Fetch a preloaded PI image from: (to be determined) and install as you would a standard stretch image
+
+or
+
+Go to the directory installpi and follow the instructions. When done, return here.
+
+After installation, the user - password is pi - openears. Change as you see fit.
+
+
+
+
+
+
 
 Deze uitvoering van de Serval is gebaseerd op een Raspberry Pi (3B+) en de Umik-1 microfoon. Na het opstarten stuurt de serval de gehoorde geluidsklassen naar een MQTT broker voor verdere afhandeling, in het volgende (JSON) formaat:
 {"sid":"serval3", "timestamp":"1532238433096", "class":" Car passing by", "match":" 0.11"}

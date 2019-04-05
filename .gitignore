@@ -1,6 +1,7 @@
 # global
 .idea
 *~
+devicehive-dev/samples/*.wav
 
 # large models
 devicehive-dev/models

@@ -2,6 +2,7 @@
 .idea
 *~
 devicehive-dev/samples/*.wav
+installpi/configuration.env
 
 # large models
 devicehive-dev/models

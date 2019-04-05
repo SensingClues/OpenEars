@@ -31,7 +31,7 @@ def resize(data, axis, new_size):
     slices = [slice(0, s) for s in shape]
 
     resized = np.concatenate([
-      data[slices],
+      data[tuple(slices)],
       np.zeros(np.stack(pad_shape))
     ], axis)
 

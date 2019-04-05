@@ -1,0 +1,16 @@
+[Unit]
+Description=Serval Service
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/home/henk/Projecten/sound/serval/serval.sh
+ExecStop=rm -f /home/henk/Projecten/sound/DL/devicehive-dev/monitorhook.log
+User=henk
+Group=henk
+Restart=always
+RestartSec=5
+WorkingDirectory=/home/henk/Projecten/sound/DL/devicehive-dev
+
+[Install]
+WantedBy=multi-user.target

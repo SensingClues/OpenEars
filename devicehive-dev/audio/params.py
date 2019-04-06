@@ -49,10 +49,10 @@ VGGISH_INPUT_TENSOR_NAME = 'vggish/input_features:0'
 VGGISH_OUTPUT_TENSOR_NAME = 'vggish/embedding:0'
 
 #YOUTUBE_CHECKPOINT_FILE = 'models/youtube_model.ckpt'
-YOUTUBE_CHECKPOINT_FILE = 'models/model.ckpt-83330'
+YOUTUBE_CHECKPOINT_FILE = 'models/model.ckpt-13810'
 
-CLASS_LABELS_INDICES = 'models/class_labels_indices_urban.csv'
+CLASS_LABELS_INDICES = 'models/class_labels_indices_amsterdam2.csv'
 
 # Predictions filter
-PREDICTIONS_COUNT_LIMIT = 16 
+PREDICTIONS_COUNT_LIMIT = 20
 PREDICTIONS_HIT_LIMIT = 0.1

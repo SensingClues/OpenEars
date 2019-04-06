@@ -24,6 +24,7 @@ from .utils import vggish, youtube8m
 
 __all__ = ['WavProcessor', 'format_predictions']
 
+np.warnings.filterwarnings('ignore', category=FutureWarning)
 
 cwd = os.path.dirname(os.path.realpath(__file__))
 

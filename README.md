@@ -16,11 +16,10 @@ Initial documentation at:  [here](https://www.iotforall.com/tensorflow-sound-cla
 # Installation
 Fetch a preloaded PI image from: (to be determined) and install as you would a standard stretch image\
 **or**\
-Go to the directory installpi and follow the instructions. When done, return here.
+Go to the directory installpi of this repository and follow the instructions in INSTALL.md. When done, return here.
 
 After installation, the user - password should be pi - openears. Change as you see fit.\
-You can SSH and VNC into the PI, and you should be able to use keyboard, mouse and monitor. If necessary, configure the wifi.git
-
+You can SSH and VNC into the PI, and you should be able to use keyboard, mouse and monitor. If necessary, configure the wifi.
 #### Configure MQTT
 Go to ~/openears/serval. If there is no serval.env file in this directory, do:\
 `cp serval.env.example serval.env`
@@ -32,12 +31,12 @@ Example of a message: {"sid":"xxxxxx", "timestamp":"1532238433096", "class":" Ca
 
 #### Configure microphone
 If you use the umik, do:\
-`cp ~/installpi/umik.asoundrc ~/.asoundrc`
+`cp ~/openears/installpi/umik.asoundrc ~/.asoundrc`
 
 If you use the trust, do:\
-`cp ~/installpi/trust.asoundrc ~/.asoundrc`
+`cp ~/openears/installpi/trust.asoundrc ~/.asoundrc`
 
-If you use a different mike, adapt the .asoundrc. There must be a device with the specifictions:
+If you use a different mike, adapt the .asoundrc. There must be a device with the specifications:
 
     pcm.rate16000Hz {
 	type plug

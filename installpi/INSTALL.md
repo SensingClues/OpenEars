@@ -55,7 +55,7 @@ We will now run the second shellscript:\
 `./install-part2.sh`
 
 This will create the virtual environments. It has to compile some packages,
-so the runtime is rather long (more then an hour, and dependent on the quelity of your SD card)
+so the runtime is rather long (more then an hour, and dependent on the quality of your SD card)
 
 After installation, reboot the pi: `sudo reboot`
 
@@ -65,7 +65,7 @@ After reboot, ssh into the pi, and goto ~/openears/installpi
 We will now run the third shellscript:\
 `./install-part3.sh`
 
-This will install the remaining packages, and it will take quiet some time.exit
+This will install the remaining packages, and it will take quiet some time.
 
 ## Step 6: Test the installation
 go to ~/openears/serval and

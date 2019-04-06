@@ -2,7 +2,7 @@
 .idea
 *~
 devicehive-dev/samples/*.wav
-installpi/configuration.env
+serval/serval.env
 
 # large models
 devicehive-dev/models

@@ -1,5 +1,5 @@
 # to run: use source activate.sh
-source configuration.env
+source serval.env
 export WORKON_HOME=~/Envs
 source /usr/local/bin/virtualenvwrapper.sh 
 workon serval

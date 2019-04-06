@@ -61,6 +61,10 @@ The model is installed in ~/openears/devicehive-dev/models. You can install a ne
 After copying you must adapt the definition in ~/openears/devicehive-dev/audio/params.py.
 Adjust YOUTUBE_CHECKPOINT_FILE,	CLASS_LABELS_INDICES and maybe PREDICTIONS_COUNT_LIMIT. If in doubt about the PREDICTIONS_COUNT_LIMIT, contact the supplier of the model.
 
+## Upgrading
+If you want to upgrade your installation, goto ~/openears and execute: `git pull`
+
+_Note: we do our best to keep backwards compatible, but please contact us before doing this_
 
 ## Running
 #### To process prerecorded wav file
@@ -88,6 +92,9 @@ To get info about parameters run
 ```bash
 python capture.py --help
 ```
+
+_Note: there is some strange bug that sometimes the first recording will produce a lot
+of Buffer overflows. In the following recordings everything looks normal. Must be looked into_
 
 #### To capture and send to MQTT
 goto ~/openears/serval and run:\

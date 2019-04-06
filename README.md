@@ -19,7 +19,7 @@ Fetch a preloaded PI image from: (to be determined) and install as you would a s
 Go to the directory installpi and follow the instructions. When done, return here.
 
 After installation, the user - password should be pi - openears. Change as you see fit.\
-You can SSH and VNC into the PI
+You can SSH and VNC into the PI, and you should be able to use keyboard, mouse and monitor. If necessary, configure the wifi.git
 
 #### Configure MQTT
 Go to ~/openears/serval. If there is no serval.env file in this directory, do:\

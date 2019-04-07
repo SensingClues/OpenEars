@@ -52,3 +52,4 @@ en indien de class labels zijn aangepast ook een csv bestand met de nieuwe class
 	PREDICTIONS_COUNT_LIMIT
 
 
+Test of johan's fork

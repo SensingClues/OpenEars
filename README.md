@@ -14,7 +14,8 @@ Current image versie: 1.1\
 Initial documentation at:  [here](https://www.iotforall.com/tensorflow-sound-classification-machine-learning-applications/)
 
 # Installation
-Fetch a preloaded PI image from: (to be determined) and install as you would a standard stretch image\
+Fetch a preloaded PI image from: https://drive.google.com/open?id=1sxMrxHLQPB092P9lWIoXFkvLKNX6K7Da Download this, extract the zip, en put the image on a SD card (lik eyou would put a stretch image). Downloading
+will take some time, though. Be advised, it is just a simple copy of a prefab installation, maybe some additional configuration has to be done.
 **or**\
 Go to the directory installpi of this repository and follow the instructions in INSTALL.md. When done, return here.
 

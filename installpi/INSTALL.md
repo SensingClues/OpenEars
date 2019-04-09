@@ -17,7 +17,7 @@ Start the pi and ssh into it.
 
 From this point on, all the installation steps are offcourse done on the pi, not on your host system (!) 
 
-Set the password with raspi-config for the pi user to "openears" (or whatever you think is appropriate, jot it down!). Best to install VNC also.
+Set the password with `sudo raspi-config` for the pi user to "openears" (or whatever you think is appropriate, jot it down!). Best to install VNC also.
 
 Make the VNC autostart (if you like that) with the method described here: https://learn.adafruit.com/adafruit-raspberry-pi-lesson-7-remote-control-with-vnc/running-vncserver-at-startup 
 

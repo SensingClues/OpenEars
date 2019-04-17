@@ -1,54 +1,118 @@
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 # OpenEars
-sensor to classify sounds
+sensor to classify sounds. It is based on a Raspberri PI mode 3B(+), a USB microphone
+and a >2Amp Power supply. Communication is done with MQTT.
 
-SERVAL image documentatie (Sound Event Recognition for Vigilance and Localisation)
-Sensing Clues: Juli 2018
-Image versie: 1.0
+# History
+SERVAL image (Sound Event Recognition for Vigilance and Localisation) development:
+- Devicehive (Open Source IoT Data Platform): 2017 
+- Sensing Clues: Juli 2018
+- Sensemakers and Sensing Clues: april 2019
 
-Deze uitvoering van de Serval is gebaseerd op een Raspberry Pi (3B+) en de Umik-1 microfoon. Na het opstarten stuurt de serval de gehoorde geluidsklassen naar een MQTT broker voor verdere afhandeling, in het volgende (JSON) formaat:
-{"sid":"serval3", "timestamp":"1532238433096", "class":" Car passing by", "match":" 0.11"}
+Current image versie: 1.1\
+Initial documentation at:  [here](https://www.iotforall.com/tensorflow-sound-classification-machine-learning-applications/)
 
-Dit image is gebouwd voor de RPi 3 B+ en een 32GB SD-kaart.
-De Umik kan aangesloten worden op een willekeurige USB poort van de RPi.
-Zorg voor een voldoende sterke power supply (>=2A) om zowel de RPi als de Umik te voeden.
-Gebruik een heatsink setje om de chips op de RPi beter te koelen.
-WiFi is *niet* geconfigureerd, gebruik voor de eerste setup een Ethernet kabel.
-Inloggen met pi/scpiserval
+# Installation
+Fetch a preloaded PI image from: https://drive.google.com/open?id=1sxMrxHLQPB092P9lWIoXFkvLKNX6K7Da Download this, extract the zip, en put the image on a 16GB SD card (like you would put a stretch image). Downloading
+will take some time, though. Be advised, it is just a simple copy of a prefab installation, maybe some additional configuration has to be done.
 
-Lokaties van code + scripts:
-~/DL/devicehive-dev: De code die capture + processing doet
-~/DL/devicehive-dev/models: DL model + class labels
-~/DL/devicehive-dev/audio/params.py: DL model configuratie
-~/serval: De scripts om de service te draaien en te monitoren
+**- or -**
 
-De MQTT configuratie kan aangepast worden in:
-~/serval/serval.sh
-Hier kan je ook de sensor 'ID' aanpassen die meegestuurd wordt in het JSON bericht.
+Go to the directory installpi of this repository and follow the instructions in INSTALL.md. When done, return here.
 
-De serval service start automatisch, indien je de service wilt stoppen gebruik dan:
-sudo systemctl stop serval.service (en 'start' om weer te starten...)
+After installation, the user - password should be pi - openears. Change as you see fit.\
+You can SSH and VNC into the PI, and you should be able to use keyboard, mouse and monitor. If necessary, configure the wifi.
+#### Configure MQTT
+Go to ~/openears/serval. If there is no serval.env file in this directory, do:\
+`cp serval.env.example serval.env`
 
-De gevoeligheid van de Umik input kun je aanpassen met 'alsamixer'.
+Open serval.env in an editor, and change the settings to your preferred MQTT broker.
 
-Crash monitor: De serval service schrijft in elke loop een timestamp naar een bestand: ~/DL/devicehive-dev/monitorhook.log
-Een crontab job controleert of dit bestand wordt bijgewerkt, en indien dit niet gebeurt zal na 3 minuten de Serval opnieuw gestart worden. Om dit tijdelijk uit te zetten kun je de crontab regel editen en uitcommenten via het volgende commando:
-'sudo crontab -e'
-
-Het is aan te bevelen om de serval in een onvertrouwde omgeving via OpenVPN te verbinden met een vertrouwd netwerk, om zo een veilige verbinding te realiseren en remote management mogelijk te maken. Dit is op dit test-image *niet* geconfigureerd.
-
-Bijwerken van het DL model met een nieuwe versie:
-Een model bestaat uit de volgende 3 bestanden:
-- 1: model.ckpt-*****.meta
-- 2: model.ckpt-*****.index
-- 3: model.ckpt-*****.data-00000-of-00001
-en indien de class labels zijn aangepast ook een csv bestand met de nieuwe class labels (csv moet ',' separated zijn)
-
-- Zet het nieuwe model (en de evt. csv file) in de DL models directory (zie boven).
-- Pas de configuratie in params.py aan zodat het nieuwe model gebruikt wordt:
-	YOUTUBE_CHECKPOINT_FILE
-- Pas indien de class labels zijn aangepast aan:
-	CLASS_LABELS_INDICES
-- Indien het aantal klassen is aangepast dan ook deze parameter aanpassen
-	PREDICTIONS_COUNT_LIMIT
+Example of a message: {"sid":"xxxxxx", "timestamp":"1532238433096", "class":" Car passing by", "match":" 0.11"}
 
 
+#### Configure microphone
+If you use the umik, do:\
+`cp ~/openears/installpi/umik.asoundrc ~/.asoundrc`
+
+If you use the trust, do:\
+`cp ~/openears/installpi/trust.asoundrc ~/.asoundrc`
+
+If you use a different mike, adapt the .asoundrc. There must be a device with the specifications:
+
+    pcm.rate16000Hz {
+	type plug
+	slave {
+		pcm trust
+		rate 16000
+		channels 1
+		format S16_LE
+	}
+
+The mike can be installed on any USB port on the PI. You shoud be able to adjust it with the alsamixer.
+
+
+#### Configure autostart
+
+This has been disabled somewhere in the developmentchain, needs some work to be enabled again.
+
+#### Change the model
+The model is installed in ~/openears/devicehive-dev/models. You can install a new version by copying the files into this directory.
+
+After copying you must adapt the definition in ~/openears/devicehive-dev/audio/params.py.
+Adjust YOUTUBE_CHECKPOINT_FILE,	CLASS_LABELS_INDICES and maybe PREDICTIONS_COUNT_LIMIT. If in doubt about the PREDICTIONS_COUNT_LIMIT, contact the supplier of the model.
+
+## Upgrading
+If you want to upgrade your installation, goto ~/openears and execute: `git pull`
+
+_Note: we do our best to keep backwards compatible, but please contact us before doing this_
+
+## Running
+#### To process prerecorded wav file
+goto ~/openears/serval and run:\
+`source todevicehive.sh`
+
+You should end up in ~/openears/devicehive-dev in the (serval) virtual environment, and then:
+
+```bash
+python parse_file.py path_to_your_file.wav
+```
+_Note: file must have 16000 rate_
+
+#### To capture and process audio from mic
+goto ~/openears/serval and run:\
+`source todevicehive.sh`
+
+You should end up in ~/openears/devicehive-dev in the (serval) virtual environment, and then:
+
+```bash
+python capture.py
+```
+It will capture and process samples in a loop.\
+To get info about parameters run
+```bash
+python capture.py --help
+```
+
+_Note: there is some strange bug that sometimes the first recording will produce a lot
+of Buffer overflows. In the following recordings everything looks normal. Must be looked into_
+
+#### To capture and send to MQTT
+goto ~/openears/serval and run:\
+`source serval.sh`
+
+After a while, you will see information about MQTT messages on the screen. You can see the messages
+themselves in your favourite MQTT client.
+
+If you want every wav file logged, uncomment the line with the CAPTUREPARAMS in serval.env. Please do not do it
+in a situation where the serval is running for a long time, because your SD Card will fill up until it dies.
+
+
+## Useful other info
+To train classification model next resources have been used:
+* [Google AudioSet](https://research.google.com/audioset/)
+* [YouTube-8M model](https://github.com/google/youtube-8m)
+* [Tensorflow vggish model](https://github.com/tensorflow/models/tree/master/research/audioset)
+
+You can try to train model with more steps/samples to get more accuracy.

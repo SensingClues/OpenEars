@@ -24,7 +24,6 @@ from log_config import LOGGING
 from audio.captor import Captor
 from audio.processor import WavProcessor, format_predictions
 
-
 parser = argparse.ArgumentParser(description='Capture and process audio')
 parser.add_argument('--min_time', type=float, default=5, metavar='SECONDS',
                     help='Minimum capture time')
@@ -53,9 +52,7 @@ class Capture(object):
                 raise FileNotFoundError('"{}" doesn\'t exist'.format(path))
             if not os.path.isdir(path):
                 raise FileNotFoundError('"{}" isn\'t a directory'.format(path))
-        monitorhook = open('monitorhook.log', 'w')
-        monitorhook.write('{:.0f}'.format(time.time()))
-        monitorhook.close()
+
         self._save_path = path
         self._ask_data = threading.Event()
         self._captor = Captor(min_time, max_time, self._ask_data, self._process)
@@ -85,9 +82,6 @@ class Capture(object):
                     logger.info('"{}" saved.'.format(f_path))
 
                 logger.info('Start processing.')
-                monitorhook = open('monitorhook.log', 'w')
-                monitorhook.write('{:.0f}'.format(time.time()))
-                monitorhook.close()
                 predictions = proc.get_predictions(
                     self._sample_rate, self._process_buf)
                 logger.info(

@@ -1,4 +1,0 @@
-serval:1532196270590: Silence: 0.73
-serval:1532196270590: Bark: 0.12
-serval:1532196270590: Car passing by: 0.11
-

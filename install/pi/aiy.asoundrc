@@ -1,0 +1,76 @@
+pcm.sndrpigooglevoi {
+	type hw;
+	card sndrpigooglevoi;
+}
+
+ctl.sndrpigooglevoi {
+	type hw;
+	card sndrpigooglevoi;
+}
+
+pcm.aiy {
+	type hw
+	card 0
+}
+
+pcm.softvol {
+	type softvol
+	slave.pcm dmix
+	control {
+		name Master
+		card 0
+	}
+}
+
+pcm.micboost {
+	type route
+	slave.pcm aiy 
+	ttable {
+		0.0 5.0
+		1.1 5.0
+	}
+}
+
+pcm.!default {
+	type asym
+	playback.pcm "plug:softvol"
+	capture.pcm "plug:micboost"
+}
+
+
+	
+#pcm.!default {
+#	type asym
+#	playback.pcm {
+# 		type plug
+#		slave.pcm aiy
+#	}
+#	capture.pcm {
+#		type plug
+#		slave.pcm aiy
+#	}
+#}
+
+pcm.makemono {
+	type plug      
+	slave.pcm {  
+		type route                     
+		slave.pcm aiy
+		slave.channels 2
+		ttable {  
+			0.0 1  
+			1.0 1
+		}                
+	}                             
+}
+
+pcm.rate16000Hz {
+	type plug
+	slave {
+		pcm makemono
+		rate 16000
+		channels 1
+		format S16_LE
+	}
+}
+

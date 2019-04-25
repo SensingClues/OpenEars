@@ -1,0 +1,21 @@
+With recordtest.py and playbacktest.py you can test if the recording of your device works. 
+
+example:
+./recordtest.py test.wav
+^CTraceback (most recent call last):
+  File "./recordtest.py", line 65, in <module>
+	    l, data = inp.read()
+			KeyboardInterrupt
+
+(I stopped recording with CTRL-C)
+
+./playbacktest.py test.wav
+
+
+
+Be careful though:
+
+-the settings in recordtest.py and playbacktest.py must be equal, otherwise you will get an awful lot of noise out of your speaker
+-the resulting wav file does not have a header, so other programs (like aplay or sox) will not know what kind of rate or pcm format is used, and will play with their default settings: more noise
+The current settings are: -fS16_LE -c1 -r16000, so aplay -fS16_LE -c1 -r16000 test.wav should create something usable.
+

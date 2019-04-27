@@ -9,17 +9,18 @@ SERVAL image (Sound Event Recognition for Vigilance and Localisation) developmen
 - Devicehive (Open Source IoT Data Platform): 2017 
 - Sensing Clues: Juli 2018
 - Sensemakers and Sensing Clues: april 2019
+- Migrated to Python 3: april 2019
 
-Current image versie: 1.1\
+Current image versie: 1.2\
 Initial documentation at:  [here](https://www.iotforall.com/tensorflow-sound-classification-machine-learning-applications/)
 
 # Installation
-Fetch a preloaded PI image from: https://drive.google.com/open?id=1sxMrxHLQPB092P9lWIoXFkvLKNX6K7Da Download this, extract the zip, en put the image on a 16GB SD card (like you would put a stretch image). Downloading
+Fetch a preloaded PI image from: https://drive.google.com/open?id=1sxMrxHLQPB092P9lWIoXFkvLKNX6K7Da (currently only Python 2.7) Download this, extract the zip, en put the image on a 16GB SD card (like you would put a stretch image). Downloading
 will take some time, though. Be advised, it is just a simple copy of a prefab installation, maybe some additional configuration has to be done.
 
 **- or -**
 
-Go to the directory installpi of this repository and follow the instructions in INSTALL.md. When done, return here.
+Go to the directory install/pi of this repository, choose your python version, and follow the instructions in the INSTALL.md for this version. When done, return here.
 
 After installation, the user - password should be pi - openears. Change as you see fit.\
 You can SSH and VNC into the PI, and you should be able to use keyboard, mouse and monitor. If necessary, configure the wifi.
@@ -34,10 +35,14 @@ Example of a message: {"sid":"xxxxxx", "timestamp":"1532238433096", "class":" Ca
 
 #### Configure microphone
 If you use the umik, do:\
-`cp ~/openears/installpi/umik.asoundrc ~/.asoundrc`
+`cp ~/openears/install/pi/umik.asoundrc ~/.asoundrc`
 
 If you use the trust, do:\
-`cp ~/openears/installpi/trust.asoundrc ~/.asoundrc`
+`cp ~/openears/install/pi/trust.asoundrc ~/.asoundrc`
+
+If you use the aiy, do:\
+`cp ~/openears/install/pi/aiy.asoundrc ~/.asoundrc`
+
 
 If you use a different mike, adapt the .asoundrc. There must be a device with the specifications:
 

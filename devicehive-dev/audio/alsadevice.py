@@ -24,7 +24,7 @@ class AudioDevice(object):
         # Open the device in nonblocking capture mode. The last argument could
         # just as well have been zero for blocking mode. Then we could have
         # left out the sleep call in the bottom of the loop
-	device = 'rate16000Hz'
+        device = 'rate16000Hz'
         self.inp = alsaaudio.PCM(alsaaudio.PCM_CAPTURE, alsaaudio.PCM_NORMAL, device=device)
 
         # Set attributes: Mono, 16000 Hz, 16 bit little endian samples
@@ -52,13 +52,13 @@ class AudioDevice(object):
         try:
            l, data = self.inp.read()
         except:
-           print "Caught Exception"
+           print("Caught Exception")
            sys.exit(1)
 
         if l:
            return data
-	else:
-	   return None
+        else:
+            return None
 
     def flush(self):
         pass

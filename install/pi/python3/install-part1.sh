@@ -33,7 +33,7 @@ EOF
 
 
 sudo apt-get update
-sude apt-get upgrade
+sudo apt-get upgrade
 sudo apt-get install -y nano
 sudo apt-get install -y libblas-dev liblapack-dev python3-dev libatlas-base-dev gfortran python3-setuptools git
 sudo apt-get install -y python3-pip
@@ -55,7 +55,7 @@ sed  -i '/; autospawn = yes/autospawn = no/' /home/pi/.config/pulse/client.conf
 
 
 # google drive for model. Will probably change in future
-cd ../devicehive-dev
+cd ../../../devicehive-dev
 rm -rf models
 export filename=models.zip
 wget --save-cookies cookies.txt 'https://docs.google.com/uc?export=download&id='$fileid -O- \

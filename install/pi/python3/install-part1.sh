@@ -22,7 +22,7 @@ export fileid=11Yw_Qdk8AzRFlcmnUlVd0ExjK9TLTbzJ
 
 #get llvm-7 running on stretch from unstable
 sudo tee /etc/apt/sources.list.d/serval-extra.list > /dev/null  <<EOF 
-/etc/apt/sources.list.d/serval-extra.list
+# /etc/apt/sources.list.d/serval-extra.list
 #HACKHACKHACK
 #This is for llvm-7. as that is not in the backports for now
 #needed for installing 

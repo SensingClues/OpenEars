@@ -50,9 +50,10 @@ sudo apt-get install -y libasound2-dev
 sudo apt-get install -y llvm-7/unstable
 
 #prevent pulseaudio of starting: pulseaudio locks all the alsa drivers so no settings from asound can be used
-cp /etc/pulse/client.conf /home/pi/.config/pulse
-sed  -i '/; autospawn = yes/autospawn = no/' /home/pi/.config/pulse/client.conf
-
+if [ -f /etc/pulse/client.conf ]; then
+	cp /etc/pulse/client.conf /home/pi/.config/pulse
+	sed  -i '/; autospawn = yes/autospawn = no/' /home/pi/.config/pulse/client.conf
+fi
 
 # google drive for model. Will probably change in future
 cd ../../../devicehive-dev

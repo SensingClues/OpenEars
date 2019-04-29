@@ -1,5 +1,10 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
+```diff
+- # Python version 3 currently unstable and not working
+- Please install the python 2 version!
+```
+
 # Installation from scratch
 Not for the weak at heart, it will take a couple of hours and some more, and it
 is a somewhat quick-aging method for your SD card as a result of all the write operations during compilation. But.. you will end up with a clean install. 

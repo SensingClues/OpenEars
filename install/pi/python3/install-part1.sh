@@ -51,6 +51,7 @@ sudo apt-get install -y llvm-7/unstable
 
 #prevent pulseaudio of starting: pulseaudio locks all the alsa drivers so no settings from asound can be used
 if [ -f /etc/pulse/client.conf ]; then
+	mkdir /home/pi/.config/pulse
 	cp /etc/pulse/client.conf /home/pi/.config/pulse
 	sed  -i '/; autospawn = yes/autospawn = no/' /home/pi/.config/pulse/client.conf
 fi

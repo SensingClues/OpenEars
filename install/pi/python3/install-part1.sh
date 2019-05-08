@@ -1,6 +1,6 @@
 # PREREQ ON PI:
 # - SWAP FILE TO 1 GB:
-#- set CONF_SWAPSIZE=1024 in /etc/dphys-swapfile
+#- set CONF_SWAPSIZE=1028 in /etc/dphys-swapfile
 #- Put an usb stick in the PI and set de swapdirectory to there
 #- sudo /etc/init.d/dphys-swapfile stop
 #- sudo /etc/init.d/dphys-swapfile start

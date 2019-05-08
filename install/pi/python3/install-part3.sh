@@ -4,14 +4,14 @@ source /usr/local/bin/virtualenvwrapper.sh
 workon serval
 
 python3 -m pip install scipy
-pyhton3 -m pip install pyaudio 
+python3 -m pip install pyaudio 
 
 python3 -m pip  install resampy
 # version 0.2.x of resampy uses llvmlite newest version.
 # that is why we use llvm-7 from unstable
 
 python3 -m pip install samplerate
-pyhton3 -m pip install pyalsaaudio
+python3 -m pip install pyalsaaudio
 
 echo " "
 echo "*****************************************************************"

@@ -19,20 +19,11 @@
 # This fileid must be taken from the shareble link from the google drive
 export fileid=11Yw_Qdk8AzRFlcmnUlVd0ExjK9TLTbzJ
 
-
-#get llvm-7 running on stretch from unstable
-sudo tee /etc/apt/sources.list.d/serval-extra.list > /dev/null  <<EOF 
-#HACKHACKHACK
-#This is for llvm-7. as that is not in the backports for now
-#needed for installing 
-#deb http://deb.debian.org/debian stretch-backports main
-deb [trusted=yes] http://http.us.debian.org/debian sid main non-free contrib
-
-EOF
-
-
 sudo apt-get update
 sudo apt-get upgrade
+
+
+
 sudo apt-get install -y nano
 sudo apt-get install -y libblas-dev liblapack-dev python3-dev libatlas-base-dev gfortran python3-setuptools git
 sudo apt-get install -y python3-pip
@@ -46,7 +37,31 @@ sudo apt-get install -y python3-cffi
 sudo apt-get install -y g++
 sudo apt-get install -y alsa-base alsa-utils
 sudo apt-get install -y libasound2-dev
+
+
+
+#get llvm-7 running on stretch from unstable
+sudo tee /etc/apt/sources.list.d/serval-extra.list > /dev/null  <<EOF 
+#HACKHACKHACK
+#This is for llvm-7. as that is not in the backports for now
+#needed for installing 
+#deb http://deb.debian.org/debian stretch-backports main
+deb [trusted=yes] http://http.us.debian.org/debian sid main non-free contrib
+
+EOF
+
+apt-get update
 sudo apt-get install -y llvm-7/unstable
+#make sure no other upgrades come from unstable
+sudo tee /etc/apt/sources.list.d/serval-extra.list > /dev/null  <<EOF 
+#HACKHACKHACK
+#This is for llvm-7. as that is not in the backports for now
+#needed for installing 
+#deb http://deb.debian.org/debian stretch-backports main
+#deb [trusted=yes] http://http.us.debian.org/debian sid main non-free contrib
+
+
+EOF
 
 #prevent pulseaudio of starting: pulseaudio locks all the alsa drivers so no settings from asound can be used
 cp /etc/pulse/client.conf /home/pi/.config/pulse

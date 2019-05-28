@@ -37,7 +37,7 @@ sudo apt-get install -y libasound2-dev
 sudo apt-get install -y llvm
 
 # google drive for model. Will probably change in future
-cd ../devicehive-dev
+cd ../../../devicehive-dev
 rm -rf models
 export filename=models.zip
 wget --save-cookies cookies.txt 'https://docs.google.com/uc?export=download&id='$fileid -O- \

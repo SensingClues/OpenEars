@@ -36,7 +36,7 @@ Before starting the first script, we have to activate some virtual memory (other
 * run: `sudo /etc/init.d/dphys-swapfile start`
 
 Goto the install directory of openears:
-`cd ~/openears/installpi`
+`cd ~/openears/install/pi/python2`
 
 Now run the first script. It will take 15-30 mins. This will basically install all the apt-get dependencies,
 and the current model. The last one is around 270MB:\
@@ -49,7 +49,7 @@ go to ~/openears/devicehive-dev, and check if the models subdirectory exists, an
 After installation, reboot the pi: `sudo reboot`
 
 ## Step 4: Install part 2
-After reboot, ssh into the pi, and goto ~/openears/installpi
+After reboot, ssh into the pi, and goto ~/openears/install/pi/python2
 
 We will now run the second shellscript:\
 `./install-part2.sh`
@@ -60,7 +60,7 @@ so the runtime is rather long (more then an hour, and dependent on the quality o
 After installation, reboot the pi: `sudo reboot`
 
 ## Step 5: Install part 3
-After reboot, ssh into the pi, and goto ~/openears/installpi
+After reboot, ssh into the pi, and goto ~/openears/install/pi/python2
 
 We will now run the third shellscript:\
 `./install-part3.sh`

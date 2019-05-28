@@ -38,6 +38,8 @@ sudo apt-get install -y g++
 sudo apt-get install -y alsa-base alsa-utils
 sudo apt-get install -y libasound2-dev
 
+#make sure python3 is used as python
+update-alternatives --install /usr/bin/python python /usr/bin/python3.5 1
 
 
 #get llvm-7 running on stretch from unstable

@@ -22,9 +22,6 @@ export fileid=11Yw_Qdk8AzRFlcmnUlVd0ExjK9TLTbzJ
 sudo apt-get update
 sudo apt-get upgrade
 
-sudo apt-get update
-sudo apt-get upgrade
-
 sudo apt-get install -y nano
 sudo apt-get install -y libblas-dev liblapack-dev python3-dev libatlas-base-dev gfortran python3-setuptools git
 sudo apt-get install -y python3-pip

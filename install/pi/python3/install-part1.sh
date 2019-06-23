@@ -50,7 +50,7 @@ deb [trusted=yes] http://http.us.debian.org/debian sid main non-free contrib
 
 EOF
 
-apt-get update
+sudo apt-get update
 sudo apt-get install -y llvm-7/unstable
 #make sure no other upgrades come from unstable
 sudo tee /etc/apt/sources.list.d/serval-extra.list > /dev/null  <<EOF 

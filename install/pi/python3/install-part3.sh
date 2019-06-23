@@ -12,6 +12,8 @@ workon serval
 pip3 install scipy
 pip3 install pyaudio 
 
+#make sure llvm-config-7 is used for resampy llvmlite-0.29.0.tar.gz installation
+export LLVM_CONFIG="/usr/bin/llvm-config-7"
 pip3 install resampy
 # version 0.2.x of resampy uses llvmlite newest version.
 # that is why we use llvm-7 from unstable

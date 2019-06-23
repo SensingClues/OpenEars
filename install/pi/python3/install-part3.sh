@@ -5,15 +5,21 @@ mkdir -p $WORKON_HOME
 source /usr/local/bin/virtualenvwrapper.sh 
 workon serval
 
-python3 -m pip install scipy
-python3 -m pip install pyaudio 
+#python3 -m pip install scipy
+#python3 -m pip install pyaudio 
 
-python3 -m pip  install resampy
+#python3 -m pip  install resampy
+pip3 install scipy
+pip3 install pyaudio 
+
+pip3 install resampy
 # version 0.2.x of resampy uses llvmlite newest version.
 # that is why we use llvm-7 from unstable
 
-python3 -m pip install samplerate
-python3 -m pip install pyalsaaudio
+#python3 -m pip install samplerate
+#python3 -m pip install pyalsaaudio
+pip3 install samplerate
+pip3 install pyalsaaudio
 
 echo " "
 echo "*****************************************************************"

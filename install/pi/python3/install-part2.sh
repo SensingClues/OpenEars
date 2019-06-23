@@ -17,13 +17,18 @@ source /usr/local/bin/virtualenvwrapper.sh
 #mkvirtualenv -p /usr/bin/python3 --system-site-packages serval
 workon serval
 
-python3 -m pip install wheel
-python3 -m pip install tensorflow==1.9.0
+#python3 -m pip install wheel
+#python3 -m pip install tensorflow==1.9.0
+pip3 install wheel
+pip3 install tensorflow==1.9.0
 #python3 -m pip install tensorflow  # installs the latest in piwheels, currently tensorflow-1.13.1-cp35-none-linux_armv7l.whl
 #python3 -m pip install https://www.piwheels.org/simple/tensorflow/tensorflow-1.13.1-cp37-none-linux_armv7l.whl#sha256=6c00dd13db0791e83cb08d532f007cc7fd44c8d7b52662a4a0065ac4fe7ca18a  #not accepted: it is somehow not available
-python3 -m pip install Cython
-python3 -m pip install pandas
-python3 -m pip install h5py
+#python3 -m pip install Cython
+#python3 -m pip install pandas
+#python3 -m pip install h5py
+pip3 install Cython
+pip3 install pandas
+pip3 install h5py
 
 echo " "
 echo "*****************************************"

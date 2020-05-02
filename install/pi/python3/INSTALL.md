@@ -1,9 +1,11 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-```diff
-- # Python version 3 currently unstable and not working
-- Please install the python 2 version!
-```
+# Versions
+We currently use:
+* Pi 3B+ or Pi4.  Most memory version is best.
+* Python 3.7 or up.
+* TensorFlow 1.15
+
 
 # Installation from scratch
 Not for the weak at heart, it will take a couple of hours and some more, and it

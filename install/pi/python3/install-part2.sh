@@ -20,7 +20,9 @@ workon serval
 #python3 -m pip install wheel
 #python3 -m pip install tensorflow==1.13.1
 pip3 install wheel
-pip3 install tensorflow==1.13.1
+wget https://github.com/PINTO0309/Tensorflow-bin/blob/master/tensorflow-1.15.0-cp37-cp37m-linux_armv7l.whl
+pip3 install tensorflow-1.15.0-cp37-cp37m-linux_armv7l.whl
+# pip3 install tensorflow==1.13.1
 #python3 -m pip install tensorflow  # installs the latest in piwheels, currently tensorflow-1.13.1-cp35-none-linux_armv7l.whl
 #python3 -m pip install https://www.piwheels.org/simple/tensorflow/tensorflow-1.13.1-cp37-none-linux_armv7l.whl#sha256=6c00dd13db0791e83cb08d532f007cc7fd44c8d7b52662a4a0065ac4fe7ca18a  #not accepted: it is somehow not available
 #python3 -m pip install Cython

@@ -1,21 +1,7 @@
-# PREREQ ON PI:
-# - SWAP FILE TO 1 GB:
-#- set CONF_SWAPSIZE=1024 in /etc/dphys-swapfile
-#- Put an usb stick in the PI and set de swapdirectory to there
-#- sudo /etc/init.d/dphys-swapfile stop
-#- sudo /etc/init.d/dphys-swapfile start
-#- run it
-#- restore the dphys-swapfile file (bcause the usb stick will not be present next time!)
-#Using the SD card for swap will shorten its life
-#set CONF_SWAPSIZE to 0
-#
-#OR:
-#mkswap /dev/sdx
-# swapon /dev/sdx
-#when done:
-#swapoff /dev/sdx
+# Last tests were done on Pi3b+ and P4-4GB.
+# OS image was Buster.  See: https://www.raspberrypi.org/downloads/raspbian/.
+# Any version will do, but for the outside sensor the Raspbian Buster Lite version is enough.  No much use for a GUI in a tree.
 
-#
 # This fileid must be taken from the shareble link from the google drive
 export fileid=11Yw_Qdk8AzRFlcmnUlVd0ExjK9TLTbzJ
 

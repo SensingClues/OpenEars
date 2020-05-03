@@ -4,9 +4,9 @@
 devicehive-dev/samples/*.wav
 serval/serval.env
 
-# large models
-devicehive-dev/models/old
-devicehive-dev/models/vggish
+# large and old models
+devicehive-dev/models/old/
+devicehive-dev/models/vggish/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

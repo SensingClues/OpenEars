@@ -5,58 +5,26 @@
 # This fileid must be taken from the shareble link from the google drive
 export fileid=11Yw_Qdk8AzRFlcmnUlVd0ExjK9TLTbzJ
 
+echo Redo apt update and upgrade, just in case
 sudo apt-get update
 sudo apt-get upgrade
 
-sudo apt-get install -y nano
-sudo apt-get install -y libblas-dev liblapack-dev python3-dev libatlas-base-dev gfortran python3-setuptools git
-sudo apt-get install -y python3-pip
-sudo apt-get install -y libportaudio2 portaudio19-dev
-sudo apt-get install -y mosquitto
-sudo apt-get install -y mosquitto-clients
-sudo apt-get install -y libhdf5-serial-dev
-sudo apt-get install -y libhdf5-dev
-sudo apt-get install -y python3-h5py
-sudo apt-get install -y python3-cffi
-sudo apt-get install -y g++
-sudo apt-get install -y alsa-base alsa-utils
-sudo apt-get install -y libasound2-dev
+echo Install a bunch of packages
+sudo apt-get install -y libblas-dev liblapack-dev python3-dev libatlas-base-dev gfortran python3-setuptools nano
+sudo apt-get install -y python3-pip libportaudio2 portaudio19-dev mosquitto mosquitto-clients libhdf5-serial-dev
+sudo apt-get install -y libhdf5-dev python3-h5py python3-cffi g++ alsa-base alsa-utils libasound2-dev llvm-7
 
-#make sure python3 is used as python
+echo Unqualified python command now uses python3
 update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1
 
-
-#get llvm-7 running on stretch from unstable
-sudo tee /etc/apt/sources.list.d/serval-extra.list > /dev/null  <<EOF 
-#HACKHACKHACK
-#This is for llvm-7. as that is not in the backports for now
-#needed for installing 
-#deb http://deb.debian.org/debian stretch-backports main
-deb [trusted=yes] http://http.us.debian.org/debian sid main non-free contrib
-
-EOF
-
-sudo apt-get update
-sudo apt-get install -y llvm-7/unstable
-#make sure no other upgrades come from unstable
-sudo tee /etc/apt/sources.list.d/serval-extra.list > /dev/null  <<EOF 
-#HACKHACKHACK
-#This is for llvm-7. as that is not in the backports for now
-#needed for installing 
-#deb http://deb.debian.org/debian stretch-backports main
-#deb [trusted=yes] http://http.us.debian.org/debian sid main non-free contrib
-
-
-EOF
-
-#prevent pulseaudio of starting: pulseaudio locks all the alsa drivers so no settings from asound can be used
+echo Prevent pulseaudio from starting: pulseaudio locks all the alsa drivers so no settings from asound can be used.
 if [ -f /etc/pulse/client.conf ]; then
 	mkdir /home/pi/.config/pulse
 	cp /etc/pulse/client.conf /home/pi/.config/pulse
 	sed  -i '/; autospawn = yes/autospawn = no/' /home/pi/.config/pulse/client.conf
 fi
 
-# google drive for model. Will probably change in future
+echo Get vggish convolution model from Google drive.
 cd ../../../devicehive-dev
 rm -rf models
 export filename=models.zip
@@ -67,6 +35,8 @@ wget --load-cookies cookies.txt -O $filename \
 rm -f confirm.txt cookies.txt
 mkdir models
 unzip models.zip -d models
+echo Throw away old reenforcement model
+rm -f models.zip models/model.ckpt* models/class_labels_indices_amsterdam2.csv
 
 echo " "
 echo "*****************************************"

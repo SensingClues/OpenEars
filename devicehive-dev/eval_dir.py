@@ -15,26 +15,37 @@
 
 import argparse
 import numpy as np
+import os
 from scipy.io import wavfile
+from audio.processor import WavProcessor
+import json
 
 parser = argparse.ArgumentParser(description='Read file and process audio')
-parser.add_argument('wav_file', type=str, help='File to read and process')
+parser.add_argument('wav_dir', type=str, help='Directory to be recursivly decended for samples.')
+parser.add_argument('json_out', type=str, help='Output JSON file', default = 'results.json')
 
+def process_dir(start_dir, out_file):
+    
+    f = open(out_file, 'w')
+    results = []
+    with WavProcessor() as proc:
+        for dirpath, dirs, files in os.walk(start_dir):
+            for filename in [f for f in files if f.lower().endswith('.wav')]:
+                fname = os.path.join(dirpath,filename)
+                result = process_file(fname, proc)
+                results.append((fname,tuple(result)))
+                print('%s %s' % (fname,result))
+    print(json.dumps(results), file=f)
+    f.close()
 
-def process_file(wav_file):
+def process_file(wav_file, proc):
     sr, data = wavfile.read(wav_file)
     if data.dtype != np.int16:
         raise TypeError('Bad sample type: %r' % data.dtype)
 
-    # local import to reduce start-up time
-    from audio.processor import WavProcessor, format_predictions
-
-    with WavProcessor() as proc:
-        predictions = proc.get_predictions(sr, data)
-
-    print(format_predictions(predictions))
+    return proc.get_predictions(sr, data) or []
 
 
 if __name__ == '__main__':
     args = parser.parse_args()
-    process_file(**vars(args))
+    process_dir(args.wav_dir, args.json_out)

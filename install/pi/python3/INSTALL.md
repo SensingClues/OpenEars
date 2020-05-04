@@ -1,19 +1,22 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-```diff
-- # Python version 3 currently unstable and not working
-- Please install the python 2 version!
-```
+# Versions
+We currently use:
+* Pi 3B+ or Pi4.  Most memory version is best.
+* Python 3.7 or up.
+* TensorFlow 1.15
+
 
 # Installation from scratch
 Not for the weak at heart, it will take a couple of hours and some more, and it
 is a somewhat quick-aging method for your SD card as a result of all the write operations during compilation. But.. you will end up with a clean install. 
 
-The Pi must be model 3B(+), the SD card must be at least 16GB
+The Pi must be model 3B(+) or 4, the SD card must be at least 16GB.  More memory is best.
 
-## Step 1: install stretch
-Grab a "stretch version with desktop" from raspberrypi.org and install on SD as
+## Step 1: install Buster
+Grab a Buster from https://www.raspberrypi.org/downloads/raspbian/ and install on SD as
 is prescribed by your host system (Windows, Mac, Linux)
+You can use any version.  For the "outside" sensor the "Lite" version is ok, but during development you are then stuck with only a character based terminal or ssh.
 
 For headless operation, perform the following configuration on the SD card:
 Activate SSH (in boot partition of SD card: `touch SSH` for Linux), Wifi (configure the /etc/wpa_supplicant/wpa_supplicant.conf)
@@ -35,6 +38,7 @@ The installation is divided into three shell scripts. After every script a reboo
 Although it should not be necessary, I have encountered some behaviour that pointed
 to a memory leak during install.
 
+The following step is not required on a Pi4 with 4GB....
 Before starting the first script, we have to activate some virtual memory (otherwise compilation will be a nono):
 * Set CONF_SWAPSIZE=2048 in /etc/dphys-swapfile (use: sudo nano dphys-swapfile)
 * run: `sudo /etc/init.d/dphys-swapfile stop`

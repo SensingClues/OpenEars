@@ -10,7 +10,7 @@ pip3 install scipy
 pip3 install pyaudio 
 
 #make sure llvm-config-7 is used for resampy llvmlite-0.29.0.tar.gz installation
-export LLVM_CONFIG="/usr/bin/llvm-config-7"
+export LLVM_CONFIG="/usr/bin/llvm-config-9"
 pip3 install resampy
 
 pip3 install samplerate

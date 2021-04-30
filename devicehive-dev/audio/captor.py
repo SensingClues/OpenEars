@@ -101,7 +101,7 @@ class Captor(object):
             #buf = resampler.process(data, 0.33333333).tobytes()
             capture_buf += raw_data
 
-            overflow = len(capture_buf) - self._max_data
+            overflow = int(len(capture_buf) - self._max_data)
             if overflow > 0:
                 logger.info('Buffer overflow, truncate {}b.'.format(overflow))
                 capture_buf = capture_buf[overflow:]

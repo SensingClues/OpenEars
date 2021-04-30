@@ -12,7 +12,7 @@ sudo apt-get upgrade
 echo Install a bunch of packages
 sudo apt-get install -y libblas-dev liblapack-dev python3-dev libatlas-base-dev gfortran python3-setuptools nano
 sudo apt-get install -y python3-pip libportaudio2 portaudio19-dev mosquitto mosquitto-clients libhdf5-serial-dev
-sudo apt-get install -y libhdf5-dev python3-h5py python3-cffi g++ alsa-base alsa-utils libasound2-dev llvm-7
+sudo apt-get install -y libhdf5-dev python3-h5py python3-cffi g++ alsa-base alsa-utils libasound2-dev llvm-9
 
 echo Unqualified python command now uses python3
 update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1

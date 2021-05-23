@@ -15,12 +15,7 @@ Current image versie: 1.2\
 Initial documentation at:  [here](https://www.iotforall.com/tensorflow-sound-classification-machine-learning-applications/)
 
 # Installation
-Fetch a preloaded PI image from: https://drive.google.com/open?id=1sxMrxHLQPB092P9lWIoXFkvLKNX6K7Da (currently only Python 2.7) Download this, extract the zip, en put the image on a 16GB SD card (like you would put a stretch image). Downloading
-will take some time, though. Be advised, it is just a simple copy of a prefab installation, maybe some additional configuration has to be done.
-
-**- or -**
-
-Go to the directory install/pi of this repository, choose your python version, and follow the instructions in the INSTALL.md for this version. When done, return here.
+Clone the repository and go to the directory install/pi, choose your python version, and follow the instructions in the INSTALL.md for this version. When done, return here.
 
 After installation, the user - password should be pi - openears. Change as you see fit.\
 You can SSH and VNC into the PI, and you should be able to use keyboard, mouse and monitor. If necessary, configure the wifi.
@@ -56,7 +51,6 @@ If you use a different mike, adapt the .asoundrc. There must be a device with th
 	}
 
 The mike can be installed on any USB port on the PI. You shoud be able to adjust it with the alsamixer.
-
 
 #### Configure autostart
 

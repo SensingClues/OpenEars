@@ -52,6 +52,8 @@ If you use a different mike, adapt the .asoundrc. There must be a device with th
 
 The mike can be installed on any USB port on the PI. You shoud be able to adjust it with the alsamixer.
 
+ISSUE: after every reboot you'll need to do this step, since .asoundrc is removed from the Pi (see issue list)
+
 #### Configure autostart
 
 This has been disabled somewhere in the developmentchain, needs some work to be enabled again.

@@ -38,13 +38,12 @@ If you use the trust, do:\
 If you use the aiy, do:\
 `cp ~/openears/install/pi/aiy.asoundrc ~/.asoundrc`
 
-
-If you use a different mike, adapt the .asoundrc. There must be a device with the specifications:
+Check with 'arecord -l' the card number and device number of your microphone and write them down. Then edit the settings (nano /home/pi/.asoundrc) for your microphone and check if you have the right card number and device number. There must be a device with the specifications:
 
     pcm.rate16000Hz {
 	type plug
 	slave {
-		pcm trust
+		pcm "hw:2,0" # EXAMPLE. Format: "hw:card,device" 
 		rate 16000
 		channels 1
 		format S16_LE

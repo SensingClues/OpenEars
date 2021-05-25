@@ -26,7 +26,7 @@ import json
 mqtt_host = "mqtt.sensemakersams.org"
 mqtt_port = 31090
 mqtt_user = "openears"
-mqtt_password = "0p3nEar5"
+mqtt_password = ""#fill in the pw
 
 from audio.captor import Captor
 from audio.processor import WavProcessor, format_predictions

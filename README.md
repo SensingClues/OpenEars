@@ -43,7 +43,7 @@ Check with 'arecord -l' the card number and device number of your microphone and
     pcm.rate16000Hz {
 	type plug
 	slave {
-		pcm "hw:2,0" # EXAMPLE. Format: "hw:card,device" 
+		pcm trust 
 		rate 16000
 		channels 1
 		format S16_LE

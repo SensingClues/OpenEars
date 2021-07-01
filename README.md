@@ -15,12 +15,7 @@ Current image versie: 1.2\
 Initial documentation at:  [here](https://www.iotforall.com/tensorflow-sound-classification-machine-learning-applications/)
 
 # Installation
-Fetch a preloaded PI image from: https://drive.google.com/open?id=1sxMrxHLQPB092P9lWIoXFkvLKNX6K7Da (currently only Python 2.7) Download this, extract the zip, en put the image on a 16GB SD card (like you would put a stretch image). Downloading
-will take some time, though. Be advised, it is just a simple copy of a prefab installation, maybe some additional configuration has to be done.
-
-**- or -**
-
-Go to the directory install/pi of this repository, choose your python version, and follow the instructions in the INSTALL.md for this version. When done, return here.
+Clone the repository and go to the directory install/pi, choose your python version, and follow the instructions in the INSTALL.md for this version. When done, return here.
 
 After installation, the user - password should be pi - openears. Change as you see fit.\
 You can SSH and VNC into the PI, and you should be able to use keyboard, mouse and monitor. If necessary, configure the wifi.
@@ -43,13 +38,12 @@ If you use the trust, do:\
 If you use the aiy, do:\
 `cp ~/openears/install/pi/aiy.asoundrc ~/.asoundrc`
 
-
-If you use a different mike, adapt the .asoundrc. There must be a device with the specifications:
+Check with 'arecord -l' the card number and device number of your microphone and write them down. Then edit the settings (nano /home/pi/.asoundrc) for your microphone and check if you have the right card number and device number. There must be a device with the specifications:
 
     pcm.rate16000Hz {
 	type plug
 	slave {
-		pcm trust
+		pcm trust 
 		rate 16000
 		channels 1
 		format S16_LE
@@ -57,6 +51,7 @@ If you use a different mike, adapt the .asoundrc. There must be a device with th
 
 The mike can be installed on any USB port on the PI. You shoud be able to adjust it with the alsamixer.
 
+ISSUE: after every reboot you'll need to do this step, since .asoundrc is removed from the Pi (see issue list)
 
 #### Configure autostart
 

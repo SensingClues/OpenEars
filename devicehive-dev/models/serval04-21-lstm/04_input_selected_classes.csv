@@ -1,0 +1,11 @@
+label;new_label;proportion_train_samples;proportion_eval_samples;description;enable
+1000;1;1.0;1.0;Silence;1
+1001;2;1.0;1.0;556 gunshots;1
+1002;3;1.0;1.0;Brommer Alarm;1
+1003;4;1.0;1.0;Brommer;1
+1004;5;1.0;1.0;Claxons;1
+1005;6;1.0;1.0;Dichtklappende autodeuren;1
+1006;7;1.0;1.0;Luide mensen (schreeuwen enz);1
+1007;8;1.0;1.0;Motoren;1
+1008;9;1.0;1.0;Terrasgeluide (stille mensen);1
+1009;10;1.0;1.0;Versterkte muziek;1

@@ -26,7 +26,7 @@ import json
 mqtt_host = "mqtt.sensemakersams.org"
 mqtt_port = 31090
 mqtt_user = "openears"
-mqtt_password = "0p3nEar5"         
+mqtt_password = "0p3nEar5"
 
 from audio.captor import Captor
 from audio.processor import WavProcessor, format_predictions
@@ -94,17 +94,14 @@ class Capture(object):
                 logger.info(
                     'Predictions: {}'.format(format_predictions(predictions))
                 )
-                
                 my_dict= {x[0]:x[1] for x in predictions}
-                
                 msg_json = {
                 "app_id": "openears",
-                "dev_id": "OE001", 
+                "dev_id": "OE001",
                 "payload_fields": my_dict,
                 "time": int(time.time() * 1e3)
                 }
                 msg_str = json.dumps(msg_json)
-                
                 auth = {"username": mqtt_user, "password": mqtt_password}
                 publish.single(
                     "pipeline/openears/OE001", payload=msg_str, hostname=mqtt_host, port=mqtt_port, auth=auth

@@ -26,7 +26,7 @@ import json
 mqtt_host = "mqtt.sensemakersams.org"
 mqtt_port = 31090
 mqtt_user = "openears"
-mqtt_password = ""
+mqtt_password = "0p3nEar5"
 
 from audio.captor import Captor
 from audio.processor import WavProcessor, format_predictions
@@ -102,11 +102,12 @@ class Capture(object):
                 "time": int(time.time() * 1e3)
                 }
                 msg_str = json.dumps(msg_json)
-                auth = {"username": mqtt_user, "password": mqtt_password}
-                publish.single(
-                    "pipeline/openears/OE001", payload=msg_str, hostname=mqtt_host, port=mqtt_port, auth=auth
-                )
-                print('message sent') 
+                try: 
+                    auth = {"username": mqtt_user, "password": mqtt_password}
+                    publish.single("pipeline/openears/OE001", payload=msg_str, hostname=mqtt_host, port=mqtt_port, auth=auth)
+                    print('message sent')
+                except:
+                    print('a connection error occured')
                 logger.info('Stop processing.')
                 self._process_buf = None
                 self._ask_data.set()
